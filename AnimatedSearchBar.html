@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Search Bar</title>
+    <style>
+        /* BODY */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            background-color: aliceblue;
+        }
+        /* SEARCH BAR CONTAINER */
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            background-color: aliceblue;
+            padding: 5px;
+            width: 300px;
+            height: 50px;
+            border-radius: 50px;
+            box-shadow: 6px 6px 10px rgba(0,0,0,0.2),
+                        -6px -6px 10px rgba(255,255,255,0.7);
+            margin: 10px;
+            position: relative;
+            transition: width 1.5s;
+        }
+        /* MAGNIFIER ICON */
+        .magnifier {
+            width: 25px;
+            cursor: pointer;
+            position: absolute;
+            left: 20px;
+        }
+        /* MIC ICON */
+        .mic {
+            width: 25px;
+            position: absolute;
+            right: 10px;
+            transition: width .4s;
+            transition-delay: 1s;
+        }
+        /* INPUT TEXT */
+        .input {
+            background-color: transparent;
+            border: none;
+            margin: 10px 50px;
+            outline: none;
+            color: rgb(100,100,100);
+            transition: width 0.4s;
+            transition-delay: 0.5s;
+        }
+        /* ACTIVE - SEARCH BAR CONTAINER */
+        .active.search-bar-container {
+            width: 50px;
+        }
+        /* ACTIVE - INPUT TEXT */
+        .active .input {
+            width: 0;
+        }
+        /* ACTIVE - MIC ICON */
+        .active .mic {
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- DIV SEARCH BAR CONTAINER -->
+    <div class="search-bar-container active">
+        <!-- MAGNIFIER GLASS IMAGE (DOWNLOADED FROM 'ICONFINDER') -->
+            <img src="images/magnifier_glass_icon.png" alt="magnifier" class="magnifier">
+        <!-- INPUT TEXT FOR SEARCH BAR -->
+            <input type="text" class="input" placeholder="Search..." />
+        <!-- GOOGLE MIC ICON IMAGE (DOWNLOADED FROM 'ICONFINDER') -->
+            <img src="images/google_mic_icon.png" alt="mic" class="mic">
+    </div>
+
+    <script>
+        // SEARCH BAR CONTAINER - ELEMENT
+        const searchBarContainerEl = document.querySelector(".search-bar-container");
+        // MAGNIFIER ICON - ELEMENT
+        const magnifierEl = document.querySelector(".magnifier");
+        // When magnifier icon is clicked, the search bar will become active
+        magnifierEl.addEventListener("click", () => {
+            searchBarContainerEl.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>

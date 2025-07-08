@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q & A Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #EBEBEB;
+        }
+        p {
+            margin-bottom: 1.25rem;
+            color: grey;
+        }
+        .selection-center {
+            width: 90vw;
+            margin: 50px auto 0;
+            max-width: 620px;
+        }
+        .question {
+            width: 60%;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .question {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 1.5rem 1.5rem 0 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .question-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: capitalize;
+            padding-bottom: 1rem;
+        }
+        .question-title p {
+            letter-spacing: 0.1rem;
+            color: yellowgreen;
+            font-weight: bolder;
+        }
+        .question-btn {
+            font-size: 1.5rem;
+            background: transparent;
+            border-color: transparent;
+            cursor: pointer;
+            color: yellowgreen;
+        }
+        .question-text {
+            padding: 1rem 0 1.5rem 0;
+            border-top: 1px solid grey;
+        }
+        /* hide text */
+        .question-text {
+            display: none;
+        }
+        .show-text .question-text {
+            display: block;
+        }
+        .minus-icon {
+            display: none;
+        }
+        .show-text .minus-icon {
+            display: inline;
+        }
+        .show-text .plus-icon {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="questions">
+        <div class="section-center">
+            <article class="question">
+                <div class="question-title">
+                    <p>Is Your Product Safe?</p>
+                    <button class="question-btn">
+                        <span class="plus-icon">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </span>
+                        <span class="minus-icon">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="question-text">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veniam cum 
+                        possimus nemo sit iusto praesentium temporibus voluptates, non corrupti harum 
+                        laborum maiores adipisci, similique mollitia consequatur quaerat voluptatibus 
+                        nostrum.</p>
+                </div>
+            </article>
+            <article class="question">
+                <div class="question-title">
+                    <p>Do You Accept All Major Credit Cards</p>
+                    <button class="question-btn">
+                        <span class="plus-icon">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </span>
+                        <span class="minus-icon">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="question-text">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veniam cum 
+                        possimus nemo sit iusto praesentium temporibus voluptates, non corrupti harum 
+                        laborum maiores adipisci, similique mollitia consequatur quaerat voluptatibus 
+                        nostrum.</p>
+                </div>
+            </article>
+            <article class="question">
+                <div class="question-title">
+                    <p>Do you Support Local Farmers?</p>
+                    <button class="question-btn">
+                        <span class="plus-icon">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </span>
+                        <span class="minus-icon">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="question-text">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veniam cum 
+                        possimus nemo sit iusto praesentium temporibus voluptates, non corrupti harum 
+                        laborum maiores adipisci, similique mollitia consequatur quaerat voluptatibus 
+                        nostrum.</p>
+                </div>
+            </article>
+            <article class="question">
+                <div class="question-title">
+                    <p>Do You USe Organic Ingredients?</p>
+                    <button class="question-btn">
+                        <span class="plus-icon">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </span>
+                        <span class="minus-icon">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="question-text">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veniam cum 
+                        possimus nemo sit iusto praesentium temporibus voluptates, non corrupti harum 
+                        laborum maiores adipisci, similique mollitia consequatur quaerat voluptatibus 
+                        nostrum.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+</body>
+<script>
+    const questions = document.querySelectorAll(".question");
+    questions.forEach((question) => {
+        const btn = question.querySelector(".question-btn");
+        btn.addEventListener("click", ()=>{
+            question.classList.toggle("show-text")
+        })
+    });
+</script>
+</html>

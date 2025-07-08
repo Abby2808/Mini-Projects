@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style>
+        body {
+            background-color: #F1F1F1;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+        }
+        p {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: .5rem;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+        button {
+            border: none;
+            font-size: 3rem;
+            margin: 0 0.5rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            background-color: blueviolet;
+            border-radius: 5px;
+            transition: all .3s ease-in-out;
+        }
+        button:hover {
+            opacity: 0.7;
+        }
+        #rock {
+            background-color: #FF0000;
+        }
+        #paper {
+            background-color: #2196F3;
+        }
+        #scissors {
+            background-color: #4CAF50;
+        }
+        #user-score {
+            color: #2196F3;
+        }
+        #computer-score {
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors Game</h1><!-- SITE HEADING -->
+    <p>Choose Your Move:</p><!-- INSTRUCTIONS PARAGRAPH -->
+    <!-- BUTTONS DIV -->
+    <div class="buttons">
+        <button id="rock">&#x1F44A;</button><!-- ROCK BUTTON WITH EMOJI -->
+        <button id="paper">&#x1f590;</button><!-- PAPER BUTTON WITH EMOJI -->
+        <button id="scissors">&#x270c;</button><!-- SCISSORS BUTTON WITH EMOJI -->
+    </div>
+    <p id="result"></p><!-- AREA TO DISPLAY GAME RESULTS -->
+    <p id="scores">
+        Your Score: <span id="user-score">0</span><!-- DISPLAY OF USERS SCORE -->
+        Computer Score: <span id="computer-score">0</span><!-- DISPLAY OF COMPUTERS SCORE -->
+    </p>
+
+    <script>
+        const buttons = document.querySelectorAll("button"); // BUTTONS Element
+        const resultEl = document.getElementById("result"); //  RESULTS Element
+        const playerScoreEl = document.getElementById("user-score"); // PLAYER SCORE Element
+        const computerScoreEl = document.getElementById("computer-score"); // COMPUTER SCORE Element
+
+        let playerScore = 0; // PLAYER SCORE Variable
+        let computerScore = 0; // COMPUTER SCORE Variable
+
+        // ForEach calls for each buttons value
+        buttons.forEach((button) => {
+            // When button is clicked, the result area will display who won and who lose
+            button.addEventListener("click", () => {
+                const result = playRound(button.id, computerPlay()); // Result will use PlayRound function
+                resultEl.textContent = result; // Display results in designated text area
+            });
+        });
+
+        // Function for Computer to make a choice
+        function computerPlay() {
+            const choices = ["rock", "paper", "scissors"];
+            const randomChoice = Math.floor(Math.random() * choices.length);
+            return choices[randomChoice];
+        }
+
+        // Function for player vs computer selection results
+        function playRound(playerSelection, computerSelection) {
+            // IF-ELSE Statement for what to display in results area
+            if (playerSelection === computerSelection) {
+                return "It's a TIE!"; // Results will say that its a tie
+            } else if ( // Conditions for player to win against computer
+                (playerSelection === "rock" && computerSelection === "scissors") ||
+                (playerSelection === "scissors" && computerSelection === "paper") ||
+                (playerSelection === "paper" && computerSelection === "rock")
+            ) {
+                playerScore++; // Add a point to player score
+                playerScoreEl.textContent = playerScore; // Display in player score area
+                return "You WIN! " + playerSelection + " beats " + computerSelection;
+            } else { // If computer beats player
+                computerScore++; // Add a point to computer score
+                computerScoreEl.textContent = computerScore; // Display in computer score area
+                return "You LOSE! " + computerSelection + " beats " + playerSelection;
+            }
+        }
+    </script>
+</body>
+</html>

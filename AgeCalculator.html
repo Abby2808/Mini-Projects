@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<lang="en-us">
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+	<title>Age Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Montserrat", sans-serif;
+            background-color: #F7F7F7;
+        }
+        .container{
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color .3s ease;
+        }
+        button:hover {
+            background-color: #0062CC;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+        <h1>Age Calculator</h1>
+        <div class="form">
+            <label for="birthday">Enter Your Date Of Birth</label>
+            <input type="date" id="birthday" name="birthday">
+            <button id="btn">Calculate Age</button>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        const btnEl = document.getElementById("btn"); // Button Element
+        const birthdayEl = document.getElementById("birthday"); // Birthday Element
+        const resultEl = document.getElementById("result"); // Result Element
+
+        function calculateAge() {
+            const birthdayValue = birthdayEl.value;
+            if(birthdayValue === ""){
+                alert("Please enter your birthday")
+            } else {
+                const age = getAge(birthdayValue);
+                resultEl.innerText = 
+                    `Your age is ${age} ${age > 1 ? "years" : "year" } old`;
+            }
+        }
+
+        function getAge(birthdayValue) {
+            const currentDate = new Date();
+            const birthdayDate = new Date(birthdayValue);
+            let age = currentDate.getFullYear() - birthdayDate.getFullYear();
+            const month = currentDate.getMonth() - birthdayDate.getMonth();
+
+            if(
+                month < 0 || 
+                (month ===0 && currentDate.getDate() < birthdayDate.getDate())
+            ) {
+                age--;
+            }
+            return age;
+        }
+
+        btnEl.addEventListener("click", calculateAge);
+    </script>
+</body>
+</html>
